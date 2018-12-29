@@ -1,0 +1,2 @@
+# javausefulcode
+java useful code
