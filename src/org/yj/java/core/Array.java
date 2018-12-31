@@ -1,4 +1,4 @@
-package org.yj.javacore.array;
+package org.yj.java.core;
 
 import java.util.Arrays;
 import java.util.Comparator;

@@ -1,4 +1,4 @@
-package org.yj.javacore.array;
+package org.yj.java.core;
 
 import java.text.DateFormat;
 import java.text.ParseException;
