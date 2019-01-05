@@ -1,11 +1,11 @@
-package org.yj.java.core;
+package org.yj.java.core.File;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
 /**
- * @author admin
+ * @author yaojun
  * @version 1.0
  * @date 2018/12/31 11:49
  **/
@@ -26,7 +26,7 @@ public class FileTest {
         // 新建File实例时，可以传递绝对路径，譬如："g:/test.txt"或者"g:\\test.txt"
         // 也可以传递相对路径，默认放在user.dir目录下，也就是当前工程的根目录
         // 路径必须存在，否则会抛异常
-        File file = new File("src/org/yj/java/core/../core/a.txt");
+        File file = new File("src/org/yj/java/core/../core/File/a.txt");
         System.out.println("文件是否存在：" + file.exists());
         if (file.exists()) {
             System.out.println("删除文件");
@@ -59,7 +59,7 @@ public class FileTest {
     public void directoryTest() {
         System.out.println();
         System.out.println("目录测试");
-        File file = new File("src/org/yj/java/core/directoryTest/test");
+        File file = new File("src/org/yj/java/core/File/directoryTest");
         if (file.exists()) {
             file.delete();
         }
