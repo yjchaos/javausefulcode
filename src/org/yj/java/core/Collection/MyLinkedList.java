@@ -128,6 +128,30 @@ public class MyLinkedList<E> {
         size++;
     }
 
+    public int indexOf(Object o) {
+        int index = 0;
+        if (o == null) {
+            Node<E> node = first;
+            while (node != null) {
+                if (node.item == null) {
+                    return index;
+                }
+                node = node.next;
+                index++;
+            }
+        } else {
+            Node<E> node = first;
+            while (node != null) {
+                if (o.equals(node.item)) {
+                    return index;
+                }
+                node = node.next;
+                index++;
+            }
+        }
+        return -1;
+    }
+
     private Node<E> node(int index) {
         if (index < (size >> 1)) {
             // 从前往后找
@@ -187,6 +211,7 @@ public class MyLinkedList<E> {
         System.out.println("size:" + myLinkedList.size());
         System.out.println("first:" + myLinkedList.getFirst());
         System.out.println("last:" + myLinkedList.getLast());
+        System.out.println("second:" + myLinkedList.get(1));
         System.out.println("removeFirst：" + myLinkedList.removeFirst());
         System.out.println("size:" + myLinkedList.size());
         System.out.println(myLinkedList);
@@ -199,5 +224,7 @@ public class MyLinkedList<E> {
         System.out.println(myLinkedList);
         myLinkedList.add(1, "2");
         System.out.println(myLinkedList);
+        System.out.println("indexOf 3:" + myLinkedList.indexOf("3"));
+        System.out.println("indexOf 1:" + myLinkedList.indexOf("1"));
     }
 }
