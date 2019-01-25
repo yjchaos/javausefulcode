@@ -1,8 +1,8 @@
 public class Main {
 
     public static void main(String[] args) {
-        Byte aByte = -0B0000010;
-        System.out.println(aByte);
+        char c = 'a';
+        System.out.println(Character.isDigit(c));
     }
 
     static final int tableSizeFor(int cap) {
