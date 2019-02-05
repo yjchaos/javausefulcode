@@ -14,42 +14,8 @@ public class FileUtil {
         long beforTime = System.currentTimeMillis();
         // fileUtil.copyWithStream("src/org/yj/java/core/io/directory4Test/video.mp4", "src/org/yj/java/core/io/directory4Test/video_copy.mp4");
         // fileUtil.copyWithBufferdStream("src/org/yj/java/core/io/directory4Test/video.mp4",
-        // "src/org/yj/java/core/io/directory4Test/video_copy.mp4");
-        fileUtil.writeTest("src/org/yj/java/core/io/directory4Test/writeTest.txt");
         long afterTime = System.currentTimeMillis();
         System.out.println(afterTime - beforTime);
-    }
-
-    public void writeTest(String dest) {
-        File destFile = new File(dest);
-        if (!destFile.exists()) {
-            try {
-                boolean flag = destFile.createNewFile();
-                if (flag) {
-                    System.out.println("dest file create success");
-                } else {
-                    System.out.println("dest file create fail");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        OutputStream os = null;
-        try {
-            os = new BufferedOutputStream(new FileOutputStream(destFile));
-            for (int i = 0; i < 10000; i++) {
-                os.write(("this is line:" + i + "\r\n").getBytes());
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-
-        }
     }
 
     public void copyWithStream(String src, String dest) {

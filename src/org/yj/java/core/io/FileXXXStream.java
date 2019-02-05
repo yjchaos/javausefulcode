@@ -1,11 +1,9 @@
 package org.yj.java.core.io;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 
 /**
- * 文件字节流
+ * 文件字节流测试
  * 
  * 1、创建源 2、选择流 3、操作 4、释放资源
  * 
@@ -17,7 +15,10 @@ public class FileXXXStream {
     public static void main(String[] args) {
         System.out.println("文件字节流测试：");
         FileXXXStream stream = new FileXXXStream();
-        stream.readFile3("src/org/yj/java/core/io/directory4Test/中文.txt");
+        // stream.readFile1("src/org/yj/java/core/io/directory4Test/中文.txt");
+        // stream.readFile2("src/org/yj/java/core/io/directory4Test/中文.txt");
+        // stream.readFile3("src/org/yj/java/core/io/directory4Test/中文.txt");
+        stream.writeFile("src/org/yj/java/core/io/directory4Test/writeTest.txt");
     }
 
     /**
@@ -26,6 +27,8 @@ public class FileXXXStream {
      * @param srcPath
      */
     public void readFile1(String srcPath) {
+        System.out.println();
+        System.out.println("readFile1 test:");
         // 1.创建源
         File file = openFile(srcPath);
         if (file != null) {
@@ -153,6 +156,41 @@ public class FileXXXStream {
                     if (null != fis) {
                         try {
                             fis.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            } else {
+                System.out.println("not a file");
+            }
+        }
+    }
+
+    public void writeFile(String srcPath) {
+        System.out.println();
+        System.out.println("writeFile test:");
+        // 1.创建源
+        File file = openFile(srcPath);
+        if (file != null) {
+            if (file.isFile()) {
+                // 2.选择流
+                OutputStream fos = null;
+                try {
+                    // 默认是覆写模式，可以设置为追加模式
+                    fos = new FileOutputStream(file, false);
+                    // 3.操作
+                    String msg = "FileOutPut write test";
+                    byte[] bytes = msg.getBytes();
+                    fos.write(bytes, 0, bytes.length);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    // 4.释放资源
+                    // 晚打开的先释放
+                    if (null != fos) {
+                        try {
+                            fos.close();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

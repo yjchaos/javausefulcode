@@ -1,11 +1,13 @@
 public class Main {
 
     public static void main(String[] args) {
-        char c = 'a';
-        System.out.println(Character.isDigit(c));
+        char[] chars = Character.toChars(0x1D546);
+        System.out.println(chars);
     }
 
     static final int tableSizeFor(int cap) {
+        // String s = "\uD834\uDF06";
+        // String s1 = "\uD835\uDD46";
         int n = cap - 1;
         n |= n >>> 1;
         n |= n >>> 2;
