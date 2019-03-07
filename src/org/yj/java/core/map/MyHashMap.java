@@ -1,4 +1,4 @@
-package org.yj.java.core.Map;
+package org.yj.java.core.map;
 
 /**
  * @author yaojun

@@ -1,8 +1,14 @@
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Main {
 
     public static void main(String[] args) {
-        char[] chars = Character.toChars(0x1D546);
-        System.out.println(chars);
+        Path path = Paths.get("/");
+        File file = new File("/");
+        System.out.println(path.toAbsolutePath());
+        System.out.println(file.getAbsolutePath());
     }
 
     static final int tableSizeFor(int cap) {

@@ -1,4 +1,4 @@
-package org.yj.java.core.Collection;
+package org.yj.java.core.collection;
 
 import java.util.HashMap;
 

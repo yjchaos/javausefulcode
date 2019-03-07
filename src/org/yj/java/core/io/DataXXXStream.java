@@ -26,10 +26,10 @@ public class DataXXXStream {
             dos.writeBoolean(false);
             dos.writeChar('a');
             dos.flush();
-            byte[] data =baos.toByteArray();
-            //读取
-            DataInputStream dis =new DataInputStream(new ByteArrayInputStream(data));
-            //顺序与写出一致
+            byte[] data = baos.toByteArray();
+            // 读取
+            DataInputStream dis = new DataInputStream(new ByteArrayInputStream(data));
+            // 顺序与写出一致
             String msg = dis.readUTF();
             int age = dis.readInt();
             boolean flag = dis.readBoolean();
