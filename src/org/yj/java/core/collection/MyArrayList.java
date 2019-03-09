@@ -10,7 +10,6 @@ import java.util.Arrays;
  * @date 2019/1/2 10:39
  */
 public class MyArrayList<T> {
-
     /**
      * 默认数组大小
      */

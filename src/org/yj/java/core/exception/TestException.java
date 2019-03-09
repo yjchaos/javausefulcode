@@ -1,5 +1,7 @@
 package org.yj.java.core.exception;
 
+import java.io.*;
+
 /**
  * @author yaojun
  * @version 1.0
@@ -12,20 +14,39 @@ public class TestException {
         testException.testArithmeticException();
     }
 
+    /**
+     * 非检查异常
+     */
     public void testArithmeticException() {
+        int i = 0;
         try {
-            int i = 1 / 0;
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-            System.out.println("-------------------------------------------------------");
-            System.out.println(e.toString());
-            System.out.println("-------------------------------------------------------");
-            System.out.println(e.getLocalizedMessage());
-            System.out.println("-------------------------------------------------------");
-            StackTraceElement[] elements = e.getStackTrace();
-            for (StackTraceElement element : elements) {
-                System.out.println(element);
+            i = 1 / 0;
+        } catch (ArithmeticException e) {
+            throw e;
+        } finally {
+            System.out.println("testArithmeticException finally");
+        }
+    }
+
+    /**
+     * 检查异常
+     * 
+     * @throws FileNotFoundException
+     */
+    public void testIOException() throws FileNotFoundException {
+        File file = new File("src/org/yj/java/core/io/directory4Test/english.txt");
+        Reader reader = null;
+        try {
+            reader = new FileReader(file);
+        } catch (FileNotFoundException e) {
+            throw e;
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
