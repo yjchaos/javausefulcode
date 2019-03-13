@@ -125,6 +125,7 @@ public class MyHashMap<K, V> {
         }
         threshold = newThr;
         Node<K, V>[] newTab = (Node<K, V>[]) new Node[newCap];
+        // todo 复制oldTab中的数据到newTab
         table = newTab;
         return table;
     }
@@ -154,6 +155,8 @@ public class MyHashMap<K, V> {
         int n;
         // 桶的个数-1
         int i;
+        // 被散列到的位置
+        int pos;
 
         // 重新计算key的hash值，为了后面散列更均匀
         int hash = hash(key);
@@ -169,11 +172,11 @@ public class MyHashMap<K, V> {
         // 考虑十进制取余，如果十进制数对10的n次幂取余，那么这个余数一定是十进制数从个位开始截取n位，例如：999%10=9，999%100=99。
         // 同理，二进制数如果对2的n次幂取余，这个余数也会是二进制数从低位开始截取n位，等同于二进制数按位与上2的n次幂-1
         // 所以在HashMap中桶的数量必须为2的幂次，这时就可以使用位运算来代替取模运算了
-        i = i & hash;
-        p = tab[i & hash];
+        pos = i & hash;
+        p = tab[pos];
         if (p == null) {
             // 被散列到的位置没有任何数据
-            tab[i] = new Node<>(hash, key, value, null);
+            tab[pos] = new Node<>(hash, key, value, null);
         } else {
             Node<K, V> e;
             // 被散列到的位置有数据，遍历链表是否有重复的key，有就更新数据，没有就插入到链表的末尾
@@ -278,7 +281,12 @@ public class MyHashMap<K, V> {
         myHashMap.put(4, "4");
         myHashMap.put(5, "5");
         myHashMap.put(6, "6");
-        myHashMap.put(6, "6");
+        myHashMap.put(7, "7");
+        myHashMap.put(8, "8");
+        myHashMap.put(9, "9");
+        myHashMap.put(10, "10");
+        myHashMap.put(11, "11");
+        myHashMap.put(12, "12");
         myHashMap.put(65, "65");
         System.out.println(myHashMap);
         System.out.println(myHashMap.get(65));
